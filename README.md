@@ -4,3 +4,9 @@ Ce `repository` contient la solution de tous les travaux dirigés réalisés en 
 
 Il est mis à jour à la fin de chaque cours.
 
+# Liste des TD
+
+| Nom | Contenu |
+|---|---|
+| TD20200220 | utilisation de argc et argv |
+
