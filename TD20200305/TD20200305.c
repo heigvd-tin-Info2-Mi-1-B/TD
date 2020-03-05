@@ -10,13 +10,12 @@
 int main(int argc, char *argv[])
 {
     eErrorCode returnCode = 0;
-#if 0
+
     returnCode = saveToTextFile();
     returnCode = readFromTextFile();
 
     returnCode = saveToBinaryFile();
     returnCode = readFromBinaryFile();
-#endif
 
     returnCode = saveTable();
     return returnCode;
