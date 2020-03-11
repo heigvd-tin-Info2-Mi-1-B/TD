@@ -11,4 +11,6 @@ Il est mis à jour à la fin de chaque cours.
 | TD20200220 | basic usage of argc and argv |
 | TD20200225 | Create and write data in a text file |
 | TD20200303 | read data in a text file (fscanf and fgets)|
+| TD20200305 | read/write text and binary file |
+| TD20200310 | read binary file header in structure|
 
