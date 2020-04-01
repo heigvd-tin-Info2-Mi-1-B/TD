@@ -13,5 +13,5 @@ Il est mis à jour à la fin de chaque cours.
 | TD20200303 | read data in a text file (fscanf and fgets)|
 | TD20200305 | read/write text and binary file |
 | TD20200310 | read binary file header in structure|
-| TD20200324 | Text processing and  dynamic memory allocation|  |
+| TD20200324 | Text processing and  dynamic memory allocation (update 20200331)| 
 
