@@ -33,6 +33,45 @@ uint32_t wc(char *s)
     return count;
 }
 
+void ws(char *s)
+{
+
+    bool inWord = false;
+    uint32_t index = 0;
+    char *start = NULL;
+    char *stop = NULL;
+    char *p = NULL;
+    char **word = NULL;
+
+    // allocate a table of string (char*). the number of cells is the number of words in 's' : wc(s)
+    word = (char **)calloc(wc(s), sizeof(char *));
+
+
+    while (s[index])
+    {
+        if (!inWord && !(s[index] == ' ' || s[index] == ',' || s[index] == '.' || s[index] == '\0'))
+        {                      // detect begining of word
+            start = s + index; // &s[index];
+            inWord = true;
+        }
+        else if (inWord && (s[index] == ' ' || s[index] == ',' || s[index] == '.' || s[index] == '\0'))
+        {
+            // detect one char after the end of word
+            // ex: "pipo" : start point on 'p', stop point on 'o'
+            stop = s + index - 1;
+            inWord = false;
+
+            for (p = start; p <= stop; p++)
+            {
+                putchar(*p);
+            }
+            puts("");
+        }
+        index++;
+    }
+    return;
+}
+
 int main(int argc, char *argv[])
 {
     eErrorCode returnCode = E_NO_ERROR;
@@ -81,6 +120,8 @@ int main(int argc, char *argv[])
         printf("%lu bytes.\n", strlen(text)); // 1336
 
         printf("%u words.\n", wc(text)); // 200
+
+        ws(text);
     }
 
     if (!returnCode)
