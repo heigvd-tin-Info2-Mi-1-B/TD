@@ -42,10 +42,14 @@ void ws(char *s)
     char *stop = NULL;
     char *p = NULL;
     char **word = NULL;
+    uint32_t indexWord = 0; //[0..wc(s)[
+    uint32_t length = 0;
+    bool wordFound = false;
+    bool finished = false;
+    uint32_t k = 0;
 
     // allocate a table of string (char*). the number of cells is the number of words in 's' : wc(s)
     word = (char **)calloc(wc(s), sizeof(char *));
-
 
     while (s[index])
     {
@@ -59,16 +63,62 @@ void ws(char *s)
             // detect one char after the end of word
             // ex: "pipo" : start point on 'p', stop point on 'o'
             stop = s + index - 1;
+            length = stop - start + 1; // ex: "pipo" => lenght=4
             inWord = false;
 
-            for (p = start; p <= stop; p++)
+            /*for (p = start; p <= stop; p++)
             {
                 putchar(*p);
+            }*/
+
+            if (indexWord) // test if word already exists in word[] only if word in not empty
+            {
+                finished = false;
+                wordFound = false;
+                *(stop + 1) = '\0';
+                k = 0;
+
+                while (!finished)
+                {
+                    //printf("compare %s with %s\n", start, word[k]);
+                    if (0 == strcmp(start, word[k]))
+                    {
+                        finished = true;
+                        wordFound = true;
+                    }
+                    k++;
+                    if (k >= indexWord)
+                    {
+                        finished = true;
+                    }
+                }
             }
-            puts("");
+            *(stop + 1) = ' ';
+
+            if (!wordFound)
+            {
+                // dynamic allocation
+                word[indexWord] = (char *)calloc(length + 1, sizeof(char)); // +1 for '\0'
+                if (word[indexWord] == NULL)
+                {
+                    puts("error calloc");
+                }
+                else
+                {
+                    // copy [start...stop] into dynamic allocation area
+                    memcpy(word[indexWord], start, length);
+                    //word[indexWord][length] = '\0'; // no need due to calloc
+
+                    // display word[indexWord]
+                    printf(" %s\n", word[indexWord]);
+
+                    indexWord++;
+                }
+            }
         }
         index++;
     }
+    printf("%u words in dictionary\n", indexWord);
     return;
 }
 
