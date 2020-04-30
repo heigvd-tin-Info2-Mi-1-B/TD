@@ -17,3 +17,4 @@ Il est mis à jour à la fin de chaque cours.
 | TD20200407 | Preprocessor | 
 | TD20200421 | Récursivité |  
 | TD20200423 | Unions, Struct, Enum |
+| TD20200428 | getopt_long |
