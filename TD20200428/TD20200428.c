@@ -11,7 +11,7 @@
 #include "TD20200428.h"
 
 
-eArgCode processArg(int argc, char *argv[])
+eArgCode processArg(int argc, char *argv[], sOptArg *optArg)
 {
 
   eArgCode arg = 0;
@@ -39,10 +39,12 @@ eArgCode processArg(int argc, char *argv[])
     case 'f':
       arg |= E_ARG_FILE + E_ARG_OK;
       // recover the filename
+      strcpy(optArg->filename, optarg);
       break;
     case 'g':
       arg |= E_ARG_GRAVITY + E_ARG_OK;
       // recover the gravity value
+      sscanf(optarg, "%lf", &optArg->gravity);
       break;
     case -1: // end of processing
       break;
@@ -61,6 +63,7 @@ int main(int argc, char *argv[])
 {
   uint32_t k = 0;
   eArgCode arg = 0;
+  sOptArg o = {"", 0.};
 
   // display args
   printf("num args=%u\n", argc);
@@ -70,8 +73,12 @@ int main(int argc, char *argv[])
   }
   puts("-----------\n");
 
-  arg = processArg(argc, argv);
+  arg = processArg(argc, argv, &o);
   printf("\narg=%04X\n", arg);
+
+  printf("filename=%s\n", o.filename);
+  printf("gravity=%+6.3lf\n", o.gravity);
+  
   return 0;
 }
 

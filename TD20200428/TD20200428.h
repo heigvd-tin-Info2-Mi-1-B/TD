@@ -14,6 +14,7 @@
 #include <getopt.h>
 
 // preprocessor symbols
+#define MAX_FILENAME_LENGTH (128)
 
 // preprocessor macros
 
@@ -28,10 +29,14 @@ typedef enum { // binary code for each option
 } eArgCode;
 
 // structured types
+typedef struct {
+    char filename[MAX_FILENAME_LENGTH];
+    double gravity;
+} sOptArg;
 
 // unions types
 
 // functions prototypes
-eArgCode processArg(int argc, char *argv[]);
+eArgCode processArg(int argc, char *argv[], sOptArg *optArg);
 
 // externals
