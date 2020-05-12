@@ -10,6 +10,8 @@
 
 #include "trigo.h"
 
+int gA = 0;
+
 sPoint rotate(const sPoint p1, const double angle)
 {
 
@@ -18,13 +20,13 @@ sPoint rotate(const sPoint p1, const double angle)
 
     p2.x = p1.x * cos(alpha) - p1.y * sin(alpha);
     p2.y = p1.x * sin(alpha) + p1.y * cos(alpha);
-
+    gA = 1;
     return p2;
 }
 
 void pointDisplay(const char *name, const sPoint p)
 {
     printf("%s: (%+6.3lf,%+6.3lf)\n", name, p.x, p.y);
-
+    gA = 2;
     return;
 }

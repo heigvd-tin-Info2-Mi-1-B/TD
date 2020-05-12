@@ -25,6 +25,8 @@
 
 // functions prototypes
 void graph(void);
+static void test(void);
+void stest(void);
 
 // externals
 extern int gGraph;

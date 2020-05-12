@@ -15,5 +15,7 @@ int main(int argc, char const *argv[])
 {
    gGraph = 2;
    graph();
+   matrix();
+   stest();
    return 0;
 }

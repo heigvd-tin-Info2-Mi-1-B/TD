@@ -26,6 +26,8 @@ typedef struct {
 // unions types
 
 // functions prototypes
+void matrix(void);
+static void test(void);
 
 // externals
 

@@ -15,7 +15,17 @@ int gGraph = 0;
 void graph(void)
 {
   puts("graph module");
-
+  test();
   gGraph = 1;
   return;
+}
+
+static void test(void) {
+
+  printf("[graph.c] - test\n");
+  return;
+}
+
+void stest(void) {
+  test();
 }

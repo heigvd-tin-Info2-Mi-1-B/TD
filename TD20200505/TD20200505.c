@@ -10,6 +10,8 @@
 
 #include "TD20200505.h"
 
+static int gA;
+
 int main(int argc, char const *argv[])
 {
   //displayError(E_ALLOC_MEM_ERROR);
@@ -18,7 +20,7 @@ int main(int argc, char const *argv[])
   sPoint p2 = {0., 0.};
 
   p2 = rotate(p1, -45);
-
+  gA = 3;
   pointDisplay("P1", p1);
   pointDisplay("P2", p2);
   return 0;

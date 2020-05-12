@@ -13,5 +13,14 @@
 void matrix(void)
 {
   puts("matrix module");
+  test();
   return;
 }
+
+
+static void test(void) {
+
+  printf("[matrix.c] - test\n");
+  return;
+}
+
