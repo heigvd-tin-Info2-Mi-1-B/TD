@@ -21,5 +21,4 @@ Il est mis à jour à la fin de chaque cours.
 | TD20200505 | Separate compilation |  
 | TD20200507 | Separate compilation |  
 | TD20200519 | List with fixed size table |
-| TD20200526 | List with fixed size table |
 
