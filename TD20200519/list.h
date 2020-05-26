@@ -13,6 +13,10 @@
 #include <string.h>
 
 // preprocessor symbols
+//#define LIST_OF_DOUBLE
+#define LIST_OF_INT32
+//#define LIST_OF_POINT2D
+
 #define MAX_LIST_SIZE (100)
 
 // preprocessor macros
@@ -20,13 +24,25 @@
 // enumerated types
 
 // structured types
+typedef struct {
+    int32_t row;
+    int32_t col;
+} sPoint2D;
 
+#ifdef LIST_OF_DOUBLE
 typedef double elem; // generic type
+#endif
+#ifdef LIST_OF_INT32
+typedef int32_t elem; // generic type
+#endif
+#ifdef LIST_OF_POINT2D
+typedef sPoint2D elem; // generic type
+#endif
 
 typedef struct {
 
-    elem element[MAX_LIST_SIZE];
     uint32_t numElem;
+    elem element[MAX_LIST_SIZE];
 
 } sList;
 // unions types
@@ -35,7 +51,11 @@ typedef struct {
 void initList(sList *l);
 bool isListFull(sList *l);
 bool isListEmpty(sList *l);
-void insertList(sList *l, elem e, int32_t pos);
+uint32_t insertElem(sList *l, elem e, int32_t pos);
+void displayElem(elem e);
+void displayList(sList *l);
+int32_t searchElem(sList *l, elem e);
+
 // externals
 
 // end of list.h
