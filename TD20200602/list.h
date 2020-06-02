@@ -18,7 +18,8 @@
 #define LIST_OF_INT32
 //#define LIST_OF_POINT2D
 
-#define MAX_LIST_SIZE (100)
+#define DEFAULT_LIST_SIZE (10)
+#define EXTENSION_LIST_SIZE (5)
 
 // preprocessor macros
 
@@ -43,9 +44,9 @@ typedef sPoint2D elem; // generic type
 
 typedef struct
 {
-
+    uint32_t capacity;
     uint32_t numElem;
-    elem element[MAX_LIST_SIZE];
+    elem *element;
 
 } sList;
 // unions types

@@ -1,6 +1,6 @@
 /**
-  \file      TD20200519.c
-  \brief     table list
+  \file      TD20200602.c
+  \brief     table list dynamic size
   \author    Pierre BRESSY
   \version   1.0
   \date      2020-04-21 13:41:24
@@ -8,7 +8,7 @@
     
 **/
 
-#include "TD20200519.h"
+#include "TD20200602.h"
 
 int main(int argc, char const *argv[])
 {
@@ -29,20 +29,22 @@ int main(int argc, char const *argv[])
 #endif
 #ifdef LIST_OF_INT32
   insertElem(&l, 1, -1);
-  displayList(&l);
   insertElem(&l, 2, -1);
-  displayList(&l);
   insertElem(&l, 3, -1);
-  displayList(&l);
-  insertElem(&l, 4, 1);
+  insertElem(&l, 4, -1);
+  insertElem(&l, 5, -1);
+  insertElem(&l, 6, -1);
+  insertElem(&l, 7, -1);
+  insertElem(&l, 8, -1);
+  insertElem(&l, 9, -1);
+  insertElem(&l, 10, -1);
+  insertElem(&l, 11, -1);
+  insertElem(&l, 12, -1);
+  insertElem(&l, 13, -1);
+  insertElem(&l, 14, -1);
   displayList(&l);
 
-  pos = searchElem(&l, 2);
-  printf("pos=%d\n", pos);
 
-  elem e;
-  e = getElem(&l, pos);
-  displayElem(e);
 #endif
 #ifdef LIST_OF_POINT2D
   //sPoint2D p1 = {10, 20};

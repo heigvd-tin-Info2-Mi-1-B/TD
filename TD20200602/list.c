@@ -14,13 +14,19 @@ void initList(sList *l)
 {
 
     l->numElem = 0;
-    return;
+    l->capacity = 0;
+    l->element = (elem *)calloc(DEFAULT_LIST_SIZE, sizeof(elem));
+    if (l->element)
+    {
+        l->capacity = DEFAULT_LIST_SIZE;
+    }
+   return;
 }
 
 bool isListFull(sList *l)
 {
 
-    return (l->numElem == MAX_LIST_SIZE);
+    return (l->numElem == l->capacity);
 }
 
 bool isListEmpty(sList *l)
@@ -32,6 +38,18 @@ bool isListEmpty(sList *l)
 uint32_t insertElem(sList *l, elem e, int32_t pos)
 {
     int32_t k = 0;
+    elem *newArea = NULL;
+
+    if (isListFull(l))
+    {
+        newArea = (elem *)realloc(l->element, (l->capacity + EXTENSION_LIST_SIZE) * sizeof(elem));
+        if (newArea)
+        {
+            l->element = newArea;
+            l->capacity += EXTENSION_LIST_SIZE;
+            printf("new capacity=%u\n", l->capacity);
+        }
+    }
 
     if (!isListFull(l))
     {
