@@ -58,9 +58,10 @@ uint32_t insertElem(sList *l, elem e, int32_t pos)
             l->element[l->numElem] = e;
             l->numElem++;
         }
-        else if (0 <= pos && pos <= (int32_t)l->numElem)
+        //else if (0 <= pos && pos <(l->numElem))
+        else if (0 <= pos && pos <= (int32_t)(l->numElem))
         {
-            for (k = l->numElem; k > pos; k--)
+         for (k = l->numElem; k > pos; k--)
             {
                 l->element[k] = l->element[k - 1];
             }
@@ -69,7 +70,7 @@ uint32_t insertElem(sList *l, elem e, int32_t pos)
         }
         else
         {
-            puts("[insertElem] bad position for insertion.");
+            puts("[insertElem] bad position for insertion !");
         }
     }
 
@@ -168,4 +169,34 @@ elem getElem(sList *l, int32_t pos)
         puts("[insertElem] bad position for getting element.");
     }
     return e;
+}
+
+void terminateList(sList *l)
+{
+
+    if (l->element)
+    {
+        free(l->element);
+        l->element = NULL;
+        l->capacity = 0;
+        l->numElem = 0;
+    }
+    return;
+}
+
+void removeElem(sList *l, int32_t pos)
+{
+    if (pos == -1)
+    {
+        pos = l->numElem - 1;
+    }
+    if (0 <= pos && pos < l->numElem)
+    {
+        l->numElem--;
+    }
+    else
+    {
+        puts("[removeElem] bad position for removing element.");
+    }
+    return;
 }
